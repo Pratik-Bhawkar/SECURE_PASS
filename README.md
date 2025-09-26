@@ -235,7 +235,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Support
 
-For support, email support@securepass.com or create an issue on GitHub.
+For support, email pratikbhawkar17@gmail.com or create an issue on GitHub.
 
 ---
 
