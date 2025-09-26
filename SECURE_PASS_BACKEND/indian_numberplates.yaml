@@ -1,0 +1,8 @@
+# indian_numberplates.yaml
+
+train: ./data/custom_dataset/images/train
+val: ./data/custom_dataset/images/val
+
+nc: 1  # number of classes
+
+names: ['number_plate']
