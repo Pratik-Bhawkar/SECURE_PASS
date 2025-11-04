@@ -50,7 +50,7 @@ app.include_router(detection.router, prefix="/detection", tags=["Detection"])
 app.include_router(ocr.router, prefix="/ocr", tags=["OCR"])
 app.include_router(verification.router, prefix="/verify", tags=["Verification"])
 app.include_router(vehicles.router, prefix="/vehicles", tags=["Vehicles"])
-app.include_router(users.router, tags=["Users"])  # No prefix for auth endpoints
+app.include_router(users.router, prefix="/users", tags=["Users"])
 app.include_router(logs.router, prefix="/logs", tags=["Logs"])
 app.include_router(photos.router, prefix="/photos", tags=["photos"])
 

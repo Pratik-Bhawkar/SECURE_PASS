@@ -6,14 +6,15 @@ export default {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        poppins: ['Poppins', 'sans-serif'],
-      },
       colors: {
-        primary: '#1D4ED8',
-        secondary: '#6B7280',
+        primary: '#00d9a6',
+        secondary: '#031834',
+      },
+      animation: {
+        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       },
     },
   },
   plugins: [],
+  important: true, // This ensures Tailwind styles take precedence
 }

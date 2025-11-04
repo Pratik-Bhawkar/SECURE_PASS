@@ -44,6 +44,19 @@ FastAPI-based backend for the Secure Pass license plate recognition system.
 uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 ```
 
+## Troubleshooting
+
+If the backend fails to start, check the following:
+
+- **Dependencies**: Ensure all packages in `requirements.txt` are installed.
+- **Environment Variables**: Confirm `.env` exists and is configured.
+- **Database**: Run `python init_db.py` to initialize the database.
+- **Directory Structure**: Verify all required folders and files exist.
+- **Error Messages**: Review terminal output for specific errors and stack traces.
+- **Python Version**: Use a compatible Python version (e.g., 3.8+).
+
+If you encounter a specific error, copy the error message and search for solutions or ask for help.
+
 ## API Documentation
 
 Once running, visit:

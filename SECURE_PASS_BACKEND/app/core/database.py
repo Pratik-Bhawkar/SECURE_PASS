@@ -34,8 +34,10 @@ def get_photo_db():
         yield db
     finally:
         db.close()
-# # Create tables if they don't exist
+# Import all models so they are registered with SQLAlchemy's Base
+from app.core import models
+
 def init_db():
+    # Ensure all tables are created for both databases
     Base.metadata.create_all(bind=user_engine)
     Base.metadata.create_all(bind=photo_engine)
-    # Initialize SQLite databases
