@@ -12,7 +12,8 @@ function App() {
     <Router>
       <div className="min-h-screen bg-[#031834]">
         <Routes>
-          <Route path="/" element={<Login />} />
+          {/* Landing page should be Home so users see the navigation links immediately */}
+          <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/admin" element={<AdminDashboard />} />
