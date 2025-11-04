@@ -30,8 +30,8 @@ class AccessLog(Base):
 
 # Captured images database models
 class Photo(Base):
-       __tablename__ = "photos"
-       id = Column(Integer, primary_key=True, index=True)
-       plate_number = Column(String, index=True)
-       image_data = Column(String)  # Store base64 string
-       timestamp = Column(DateTime, default=datetime.utcnow)
+    __tablename__ = "photos"
+    id = Column(Integer, primary_key=True, index=True)
+    plate_number = Column(String, index=True)
+    image_data = Column(String)  # Store base64 string
+    timestamp = Column(DateTime, default=datetime.utcnow)
