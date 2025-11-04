@@ -54,6 +54,23 @@ const ProtectedRoute = ({ element, allowedRole }) => {
   return element;
 };
 
+// Root redirect component
+const RootRedirect = () => {
+  const navigate = useNavigate();
+  const token = localStorage.getItem('token');
+  const role = localStorage.getItem('role');
+
+  useEffect(() => {
+    if (!token || !role) {
+      navigate('/login');
+    } else {
+      redirectToDashboard(role, navigate);
+    }
+  }, [token, role, navigate]);
+
+  return null; // This component doesn't render anything
+};
+
 function App() {
   return (
     <Router>
@@ -72,7 +89,7 @@ function App() {
           path="/manager"
           element={<ProtectedRoute element={<ManagerDashboard />} allowedRole="manager" />}
         />
-        <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/" element={<RootRedirect />} />
       </Routes>
     </Router>
   );

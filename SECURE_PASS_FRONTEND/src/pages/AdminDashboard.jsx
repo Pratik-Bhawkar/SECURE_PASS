@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { FiLogOut, FiTrash2, FiPlus, FiUsers, FiShield, FiSettings, FiMenu, FiX, FiEye, FiCar } from 'react-icons/fi';
+import { FiLogOut, FiTrash2, FiPlus, FiUsers, FiShield, FiSettings, FiMenu, FiX, FiEye, FiTruck } from 'react-icons/fi';
+import { getApiUrl, API_ENDPOINTS } from '../config/api';
 import sciFiLogo from '../assets/sci-fi-logo.png';
 
 const AdminDashboard = () => {
@@ -24,7 +25,7 @@ const AdminDashboard = () => {
   });
   const [formError, setFormError] = useState('');
 
-  const API = process.env.REACT_APP_API_URL || 'http://localhost:8000';
+
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -43,9 +44,9 @@ const AdminDashboard = () => {
     try {
       // Fetch all data in parallel
       const [logsRes, vehiclesRes, photosRes] = await Promise.all([
-        axios.get(`${API}/logs/?limit=10`).catch(() => ({ data: [] })),
-        axios.get(`${API}/vehicles`, { headers }).catch(() => ({ data: [] })),
-        axios.get(`${API}/photos/`, { headers }).catch(() => ({ data: [] }))
+        axios.get(`${getApiUrl(API_ENDPOINTS.LOGS)}/?limit=10`).catch(() => ({ data: [] })),
+        axios.get(getApiUrl(API_ENDPOINTS.VEHICLES), { headers }).catch(() => ({ data: [] })),
+        axios.get(`${getApiUrl(API_ENDPOINTS.PHOTOS)}/`, { headers }).catch(() => ({ data: [] }))
       ]);
 
       setLogs(logsRes.data);
@@ -91,7 +92,7 @@ const AdminDashboard = () => {
 
     setLoading(true);
     try {
-      await axios.post(`${API}/vehicles`, {
+      await axios.post(getApiUrl(API_ENDPOINTS.VEHICLES), {
         ...formData,
         plate_number: formData.plate_number.toUpperCase()
       }, {
@@ -116,7 +117,7 @@ const AdminDashboard = () => {
     const token = localStorage.getItem('token');
     setLoading(true);
     try {
-      await axios.delete(`${API}/vehicles/${plate_number}`, {
+      await axios.delete(`${getApiUrl(API_ENDPOINTS.VEHICLES)}/${plate_number}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       fetchData(); // Refresh data
@@ -134,7 +135,7 @@ const AdminDashboard = () => {
 
   const menuItems = [
     { id: 'overview', label: 'Overview', icon: FiUsers },
-    { id: 'vehicles', label: 'Vehicles', icon: FiCar },
+    { id: 'vehicles', label: 'Vehicles', icon: FiTruck },
     { id: 'logs', label: 'Access Logs', icon: FiShield },
     { id: 'photos', label: 'Photos', icon: FiEye },
   ];
@@ -264,7 +265,7 @@ const AdminDashboard = () => {
                 <StatCard 
                   title="Total Vehicles" 
                   value={vehicles.length} 
-                  icon={FiCar} 
+                  icon={FiTruck} 
                   color="emerald" 
                 />
                 <StatCard 
@@ -400,7 +401,7 @@ const AdminDashboard = () => {
               {/* Vehicles List */}
               <div className="bg-gray-800/30 backdrop-blur-md p-6 rounded-xl border border-gray-700/50">
                 <h2 className="text-xl font-semibold text-emerald-400 mb-4 flex items-center">
-                  <FiCar className="mr-2" />
+                  <FiTruck className="mr-2" />
                   Authorized Vehicles ({vehicles.length})
                 </h2>
                 
@@ -446,7 +447,7 @@ const AdminDashboard = () => {
                   </div>
                 ) : (
                   <div className="text-center py-8 text-gray-400">
-                    <FiCar size={48} className="mx-auto mb-4 opacity-50" />
+                    <FiTruck size={48} className="mx-auto mb-4 opacity-50" />
                     <p>No authorized vehicles found.</p>
                     <p className="text-sm">Add your first vehicle using the form above.</p>
                   </div>

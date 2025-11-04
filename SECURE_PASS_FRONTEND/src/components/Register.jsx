@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import styled, { keyframes } from 'styled-components';
+import { getApiUrl, API_ENDPOINTS } from '../config/api';
 import sciFiLogo from '../assets/sci-fi-logo.png';
 
 // Floating animation keyframes
@@ -109,8 +110,6 @@ const Register = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const API_BASE_URL = 'http://192.168.0.150:8000';
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
@@ -120,7 +119,7 @@ const Register = () => {
     }
     try {
       await axios.post(
-        `${API_BASE_URL}/users/register`,
+        getApiUrl(API_ENDPOINTS.REGISTER),
         { username, password, role }
       );
       navigate('/login');

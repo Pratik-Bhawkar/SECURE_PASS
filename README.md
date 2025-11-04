@@ -2,7 +2,31 @@
 
 A modern, full-stack application for automated license plate recognition and access control management.
 
-## 🚀 Features
+## � Screenshots
+
+### Desktop Interface
+<div align="center">
+  <img src="screenshots/login-desktop.png" alt="Login Page" width="45%"/>
+  <img src="screenshots/admin-dashboard-desktop.png" alt="Admin Dashboard" width="45%"/>
+  <img src="screenshots/security-dashboard-desktop.png" alt="Security Dashboard" width="45%"/>
+  <img src="screenshots/vehicle-management-desktop.png" alt="Vehicle Management" width="45%"/>
+</div>
+
+### Mobile Interface
+<div align="center">
+  <img src="screenshots/login-mobile.png" alt="Mobile Login" width="30%"/>
+  <img src="screenshots/admin-dashboard-mobile.png" alt="Mobile Dashboard" width="30%"/>
+  <img src="screenshots/mobile-navigation.png" alt="Mobile Navigation" width="30%"/>
+</div>
+
+### API Documentation
+<div align="center">
+  <img src="screenshots/api-docs-desktop.png" alt="FastAPI Documentation" width="80%"/>
+</div>
+
+> **Note**: Screenshots will be displayed once added to the `screenshots/` directory.
+
+## �🚀 Features
 
 - **Real-time License Plate Recognition**: Advanced OCR and ML-based plate detection
 - **Role-based Access Control**: Admin, Manager, and Security user roles

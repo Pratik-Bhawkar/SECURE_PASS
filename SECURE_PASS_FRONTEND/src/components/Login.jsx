@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import { FiUserPlus, FiUser, FiLock, FiEye, FiEyeOff } from 'react-icons/fi';
+import { getApiUrl, API_ENDPOINTS } from '../config/api';
 import sciFiLogo from '../assets/sci-fi-logo.png';
 
 const Login = () => {
@@ -45,7 +46,7 @@ const Login = () => {
     setError('');
 
     try {
-      const response = await axios.post('http://localhost:8000/token', formData, {
+      const response = await axios.post(getApiUrl(API_ENDPOINTS.LOGIN), formData, {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
         },

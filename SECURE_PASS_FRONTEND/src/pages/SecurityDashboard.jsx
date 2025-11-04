@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { getApiUrl, API_ENDPOINTS } from '../config/api';
 import { FiLogOut, FiMenu, FiX, FiShield, FiCamera, FiCheckCircle, FiXCircle, FiClock } from 'react-icons/fi';
 import sciFiLogo from '../assets/sci-fi-logo.png';
 
@@ -20,7 +21,7 @@ const SecurityDashboard = () => {
     pending: 0
   });
 
-  const API = process.env.REACT_APP_API_URL || 'http://localhost:8000';
+
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -42,7 +43,7 @@ const SecurityDashboard = () => {
 
     try {
       // Fetch recent scan logs
-      const logsResponse = await axios.get(`${API}/logs/?limit=20`);
+      const logsResponse = await axios.get(`${getApiUrl(API_ENDPOINTS.LOGS)}/?limit=20`);
       setRecentScans(logsResponse.data);
       
       // Calculate stats
