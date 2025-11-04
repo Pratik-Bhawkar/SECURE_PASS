@@ -51,7 +51,6 @@ def ensure_directories():
         VALID_PLATES_DIR, CUSTOM_DATASET_DIR, DEBUG_DIR,
         LOG_FILE.parent
     ]
-    
     for directory in directories:
         directory.mkdir(parents=True, exist_ok=True)
 

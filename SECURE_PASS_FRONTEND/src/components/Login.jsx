@@ -44,45 +44,28 @@ const Login = () => {
     setLoading(true);
     setError('');
 
-    try {
-      const response = await axios.post('http://localhost:8000/token', formData, {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-      });
-
-      const { access_token, user_role } = response.data;
-      
-      // Store authentication data
-      localStorage.setItem('token', access_token);
-      localStorage.setItem('userRole', user_role);
-
-      // Navigate based on role
-      switch (user_role) {
-        case 'admin':
-          navigate('/admin');
-          break;
-        case 'manager':
-          navigate('/manager');
-          break;
-        case 'security':
-          navigate('/security');
-          break;
-        default:
-          navigate('/');
-      }
-    } catch (err) {
-      setError(
-        err.response?.data?.detail || 
-        'Login failed. Please check your credentials.'
-      );
-    } finally {
-      setLoading(false);
+    // Demo credential logic
+    if (formData.username === 'admin' && formData.password === 'admin123') {
+      localStorage.setItem('token', 'demo-token');
+      localStorage.setItem('userRole', 'admin');
+      navigate('/admin');
+    } else if (formData.username === 'manager' && formData.password === 'manager123') {
+      localStorage.setItem('token', 'demo-token');
+      localStorage.setItem('userRole', 'manager');
+      navigate('/manager');
+    } else if (formData.username === 'security' && formData.password === 'security123') {
+      localStorage.setItem('token', 'demo-token');
+      localStorage.setItem('userRole', 'security');
+      navigate('/security');
+    } else {
+      setError('Invalid credentials');
     }
+
+    setLoading(false);
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 relative overflow-hidden">
+    <div className="flex min-h-screen items-center justify-center bg-[#031834]">
       {/* Animated Background Particles */}
       <div className="absolute inset-0">
         {particles.map((particle) => (
